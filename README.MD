@@ -1,0 +1,1 @@
+Food Manager app developed by MagneeR
