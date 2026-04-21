@@ -1,7 +1,10 @@
-from decouple import config
+#from decouple import config
+import os
+from dotenv import load_dotenv
 import reflex as rx
 
-DATABASE_URL = config("DATABASE_URL")
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL")
 # In cors_allowed_origins, add the URL of frontend application
 config = rx.Config(
     app_name="food_manager",
