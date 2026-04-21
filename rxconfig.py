@@ -11,6 +11,7 @@ config = rx.Config(
     #cors_allowed_origins=[
     #    "http://localhost:3000",
     #],
+    api_url="https://foodmanager.up.railway.app/",
     db_url=DATABASE_URL,
     plugins=[
         rx.plugins.SitemapPlugin()

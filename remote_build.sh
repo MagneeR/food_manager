@@ -5,7 +5,7 @@ pip install -r requirements.txt
 rm -rf public
 export REFLEX_LOGLEVEL=default
 reflex init
-API_URL=foodmanager.up.railway.app reflex export --frontend-only
+API_URL=https://foodmanager.up.railway.app/ reflex export --frontend-only
 unzip frontend.zip -d public
 rm -f frontend.zip
 deactivate
