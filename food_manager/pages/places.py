@@ -12,17 +12,17 @@ from ..state import PlacesState
 
 def place_card(place_entry : PlacesModel) -> rx.Component:
     return rx.card(
-        rx.link(
-            rx.text(place_entry.place, size="5"),
-            href=f"{Routes.ITEMS.value}/{place_entry.id}",
-        ),
         rx.hstack(
+            rx.link(
+                rx.text(place_entry.place, size="5"),
+                href=f"{Routes.ITEMS.value}/{place_entry.id}",
+            ),
             rx.icon(
                 "trash-2",
                 _as="button",
                 on_click=PlacesState.delete_place(place_entry)
             ),
-            justify_content="flex-end",
+            justify_content="space-around",
         ),
         style=common_card_style
     )

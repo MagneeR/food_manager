@@ -1,5 +1,4 @@
 reflex==0.8.26
 reflex-local-auth==0.4.0
-#python-decouple
 python-dotenv
 psycopg2-binary

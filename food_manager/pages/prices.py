@@ -14,6 +14,7 @@ def accordion_item(price_entry) -> rx.Component:
         content=rx.hstack(
             price_entry.price,
             rx.icon("trash-2", _as="button", on_click=PricesState.delete_price(price_entry)),
+            justify_content="space-between",
         ),
         background_color= ColorPalette.BACKGROUND_GREEN.value,
     )

@@ -13,9 +13,17 @@ from ..style import add_button_style, common_card_style, vstack_pages_style, mod
 def item_card(item_entry: ItemsModel) -> rx.Component:
     return rx.card(
         rx.vstack(
-            rx.text(
-                item_entry.item,
-                size="5"
+            rx.hstack(
+                rx.text(
+                    item_entry.item,
+                    size="5"
+                ),
+                rx.icon(
+                    "trash-2",
+                    _as="button",
+                    on_click=ItemsState.delete_item(item_entry),
+                ),
+                align_items="inherit",
             ),
             rx.cond(
                 item_entry.has_price,
@@ -48,15 +56,6 @@ def item_card(item_entry: ItemsModel) -> rx.Component:
                 justify_content="space-evenly"
             ),
             align_items="center",
-        ),
-        rx.hstack(
-            rx.icon(
-                "trash-2",
-                _as="button",
-                on_click=ItemsState.delete_item(item_entry),
-            ),
-            justify_content="flex-end",
-            margin_top="0.8em",
         ),
         style=common_card_style,
     )

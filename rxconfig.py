@@ -8,9 +8,10 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 # In cors_allowed_origins, add the URL of frontend application
 config = rx.Config(
     app_name="food_manager",
-    #cors_allowed_origins=[
-    #    "http://localhost:3000",
-    #],
+    cors_allowed_origins=[
+        "http://localhost:3000",
+        "https://food-manager-seven.vercel.app"
+    ],
     api_url="https://foodmanager.up.railway.app",
     db_url=DATABASE_URL,
     plugins=[
