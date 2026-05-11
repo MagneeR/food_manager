@@ -76,7 +76,7 @@ class PlacesState(MyLocalAuthState):
                 sqlmodel.select(PlacesModel).where(PlacesModel.id == self.my_place_id)
             ).one_or_none()
         self.place = result
-    
+    @rx.event
     def add_place(self, form_data: dict):
         data = form_data.copy()
         if self.authenticated_user_info.id is not None:
@@ -162,6 +162,7 @@ class ItemsState(PlacesState):
             session.refresh(item)
             self.item = item
     
+    @rx.event
     def add_items(self, form_data: dict):
         data = form_data.copy()
         if self.authenticated_user_info.id is not None:
@@ -267,6 +268,7 @@ class PricesState(ItemsState):
             ).all()
             self.prices = prices
     
+    @rx.event
     def add_supermarket_prices(self, form_data: dict):
         data = form_data.copy()
         if self.authenticated_user_info.id is not None:
