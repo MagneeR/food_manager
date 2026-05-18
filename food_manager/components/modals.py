@@ -21,7 +21,7 @@ def place_modal() -> rx.Component:
         ),
         rx.dialog.content(
             rx.dialog.title(
-                "Añade un nuevo lugar",
+                f"Añade un nuevo lugar para el usuario: {PlacesState.authenticated_user_info.id}",
                 style=modal_title_style
             ),
             rx.form(
@@ -54,7 +54,7 @@ def place_modal() -> rx.Component:
                     spacing="3",
                 ),
                 on_submit=PlacesState.add_place,
-                reset_on_submit=False,
+                #reset_on_submit=False,
             ),
             style=modal_background_style
         ),

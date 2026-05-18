@@ -48,6 +48,7 @@ def places() -> rx.Component:
     return rx.box(
         rx.vstack(
             rx.heading(Pages.PLACES_UPPER.value, size="9"),
+            rx.heading(f"User: {PlacesState.authenticated_user_info.id}", size="9"),
             place_grid(),
             place_modal(),
             style=vstack_pages_style

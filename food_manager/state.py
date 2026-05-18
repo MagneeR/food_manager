@@ -76,7 +76,7 @@ class PlacesState(MyLocalAuthState):
                 sqlmodel.select(PlacesModel).where(PlacesModel.id == self.my_place_id)
             ).one_or_none()
         self.place = result
-    @rx.event
+    
     def add_place(self, form_data: dict):
         data = form_data.copy()
         if self.authenticated_user_info.id is not None:
@@ -93,6 +93,7 @@ class PlacesState(MyLocalAuthState):
         return rx.redirect(Routes.PLACES.value)
         
     def list_places(self):
+        print("State: List places")
         with rx.session() as session:
             places = session.exec(
                 sqlmodel.select(PlacesModel).where(
@@ -145,7 +146,7 @@ class ItemsState(PlacesState):
     @rx.var(cache=True)
     def my_item_id(self) -> str :
         return self.router.page.params.get('item_id',"")
-    
+
     def update_db(self, item_detail: dict):
         with rx.session() as session:
             item = session.exec(
@@ -162,7 +163,6 @@ class ItemsState(PlacesState):
             session.refresh(item)
             self.item = item
     
-    @rx.event
     def add_items(self, form_data: dict):
         data = form_data.copy()
         if self.authenticated_user_info.id is not None:
@@ -268,7 +268,6 @@ class PricesState(ItemsState):
             ).all()
             self.prices = prices
     
-    @rx.event
     def add_supermarket_prices(self, form_data: dict):
         data = form_data.copy()
         if self.authenticated_user_info.id is not None:
